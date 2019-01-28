@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.video.xiamikan.mapper.HomePageMapper" >
+
+    <resultMap id="BaseResultMap" type="com.video.xiamikan.entity.HomePageEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="category" property="category" jdbcType="INTEGER" />
+        <result column="categoryName" property="categoryName" jdbcType="VARCHAR" />
+        <result column="priority" property="priority" jdbcType="INTEGER"/>
+        <result column="item1" property="item1" jdbcType="BIGINT" />
+        <result column="item2" property="item2" jdbcType="BIGINT" />
+        <result column="item3" property="item3" jdbcType="BIGINT" />
+        <result column="item4" property="item4" jdbcType="BIGINT" />
+        <result column="item5" property="item5" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, category, categoryName, priority, item1,item2,item3,item4,item5
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM home_page_tb
+    </select>
+
+    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM home_page_tb
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.video.xiamikan.entity.HomePageEntity" >
+       INSERT INTO
+               home_page_tb
+               (category, categoryName, priority, item1,item2,item3,item4,item5)
+           VALUES
+               (#{category}, #{categoryName}, #{priority}, #{item1}, #{item2}, #{item3},#{item4}, #{item5})
+    </insert>
+
+    <update id="update" parameterType="com.video.xiamikan.entity.HomePageEntity" >
+        UPDATE
+        home_page_tb
+        SET
+        <if test="category != null">category = #{category},</if>
+        <if test="categoryName != null">categoryName = #{categoryName},</if>
+        <if test="priority != null">priority = #{priority},</if>
+        <if test="item1 != null">item1 = #{item1},</if>
+        <if test="item2 != null">item2 = #{item2},</if>
+        <if test="item3 != null">item3 = #{item3},</if>
+        <if test="item4 != null">item4 = #{item4},</if>
+        <if test="item5 != null">item5 = #{item5},</if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+       DELETE FROM
+                home_page_tb
+       WHERE
+                id =#{id}
+    </delete>
+
+</mapper>

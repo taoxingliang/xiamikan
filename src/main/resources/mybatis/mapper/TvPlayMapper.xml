@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.video.xiamikan.mapper.TvPlayMapper" >
+
+    <resultMap id="BaseResultMap" type="com.video.xiamikan.entity.TvPlayEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="tv_name" property="tv_name" jdbcType="VARCHAR" />
+        <result column="tv_poster_url" property="tv_poster_url" jdbcType="VARCHAR" />
+        <result column="tv_director" property="tv_director" jdbcType="VARCHAR"/>
+        <result column="tv_performer" property="tv_performer" jdbcType="VARCHAR" />
+        <result column="tv_number" property="tv_number" jdbcType="INTEGER" />
+        <result column="tv_type" property="tv_type" jdbcType="INTEGER" />
+        <result column="tv_national_area" property="tv_national_area" jdbcType="INTEGER" />
+        <result column="tv_release_time" property="tv_release_time" jdbcType="INTEGER" />
+        <result column="tv_length" property="tv_length" jdbcType="INTEGER" />
+        <result column="tv_alias" property="tv_alias" jdbcType="VARCHAR" />
+        <result column="IMDb_id" property="IMDb_id" jdbcType="VARCHAR" />
+        <result column="douban_id" property="douban_id" jdbcType="VARCHAR" />
+        <result column="tv_introduction" property="tv_introduction" jdbcType="VARCHAR" />
+        <result column="douban_level" property="douban_level" jdbcType="FLOAT" />
+        <result column="tv_subscriber_num" property="tv_subscriber_num" jdbcType="INTEGER" />
+        <result column="tv_create_time" property="tv_create_time" jdbcType="TIMESTAMP" />
+        <result column="tv_update_time" property="tv_update_time" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, tv_name, tv_poster_url, tv_director, tv_performer, tv_number, tv_type,tv_national_area,tv_release_time,
+        tv_length, tv_alias,IMDb_id,douban_id, tv_introduction, douban_level, tv_subscriber_num, tv_create_time,
+        tv_update_time
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xiamikan_tvplay_tb
+    </select>
+
+    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xiamikan_tvplay_tb
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.video.xiamikan.entity.TvPlayEntity" >
+       INSERT INTO
+               xiamikan_tvplay_tb
+               (tv_name, tv_poster_url, tv_director, tv_performer, tv_number, tv_type,tv_national_area,tv_release_time,
+                tv_length, tv_alias,IMDb_id,douban_id, tv_introduction, douban_level, tv_subscriber_num, tv_create_time,
+                tv_update_time)
+           VALUES
+               (#{tv_name}, #{tv_poster_url}, #{tv_director}, #{tv_performer}, #{tv_number}, #{tv_type},
+               #{tv_national_area},#{tv_release_time}, #{tv_length}, #{tv_alias}, #{IMDb_id}, #{douban_id},
+               #{tv_introduction}, #{douban_level}, #{tv_subscriber_num},#{tv_create_time},
+               #{tv_update_time})
+    </insert>
+
+    <update id="update" parameterType="com.video.xiamikan.entity.TvPlayEntity" >
+        UPDATE
+        xiamikan_tvplay_tb
+        SET
+        <if test="tv_name != null">tv_name = #{tv_name},</if>
+        <if test="tv_poster_url != null">tv_poster_url = #{tv_poster_url},</if>
+        <if test="tv_director != null">tv_director = #{tv_director},</if>
+        <if test="tv_performer != null">film_director = #{tv_performer},</if>
+        <if test="tv_number != null">tv_number = #{tv_number},</if>
+        <if test="tv_type != null">tv_type = #{tv_type},</if>
+        <if test="tv_national_area != null">tv_national_area = #{tv_national_area},</if>
+        <if test="tv_release_time != null">tv_release_time = #{tv_release_time},</if>
+        <if test="tv_length != null">tv_length = #{tv_length},</if>
+        <if test="tv_alias != null">tv_alias = #{tv_alias},</if>
+        <if test="IMDb_id != null">IMDb_id = #{IMDb_id},</if>
+        <if test="douban_id != null">douban_id = #{douban_id},</if>
+        <if test="tv_introduction != null">tv_introduction = #{tv_introduction},</if>
+        <if test="douban_level != null">douban_level = #{douban_level},</if>
+        <if test="tv_subscriber_num != null">tv_subscriber_num = #{tv_subscriber_num},</if>
+        <if test="tv_create_time != null">tv_create_time = #{tv_create_time},</if>
+        <if test="tv_update_time != null">tv_update_time = #{tv_update_time},</if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+       DELETE FROM
+                xiamikan_tvplay_tb
+       WHERE
+                id =#{id}
+    </delete>
+
+</mapper>
