@@ -55,9 +55,11 @@ public class MainController {
         for (HomePageEntity entity : homePageEntities) {
             HomePageRsp rsp = new HomePageRsp();
             rsp.category = entity.getCategory();
+            rsp.categoryName = entity.getCategoryName();
             if (entity.getCategory() == 1) {
                 FilmEntity filmEntity = mFilmServiceImpl.getOne(entity.getItem1());
                 if (filmEntity != null) {
+                    //rsp.regon1 = filmEntity.getFilm_national_area();
                     rsp.name1 = filmEntity.getFilm_name();
                     rsp.doubanScore1 = filmEntity.getDouban_level();
                     rsp.id1 = filmEntity.getId();
@@ -83,6 +85,13 @@ public class MainController {
                     rsp.doubanScore4 = filmEntity.getDouban_level();
                     rsp.id4 = filmEntity.getId();
                     rsp.posterUrl4 = filmEntity.getFile_poster_url();
+                }
+                filmEntity = mFilmServiceImpl.getOne(entity.getItem5());
+                if (filmEntity != null) {
+                    rsp.name5 = filmEntity.getFilm_name();
+                    rsp.doubanScore5 = filmEntity.getDouban_level();
+                    rsp.id5 = filmEntity.getId();
+                    rsp.posterUrl5 = filmEntity.getFile_poster_url();
                 }
             } else if (entity.getCategory() == 2) {
 
@@ -114,7 +123,51 @@ public class MainController {
                     rsp.id4 = tvPlayEntity.getId();
                     rsp.posterUrl4 = tvPlayEntity.getTv_poster_url();
                 }
+                tvPlayEntity = mTvPlayServiceImpl.getOne(entity.getItem5());
+                if (tvPlayEntity != null) {
+                    rsp.name5 = tvPlayEntity.getTv_name();
+                    rsp.doubanScore5 = tvPlayEntity.getDouban_level();
+                    rsp.id5 = tvPlayEntity.getId();
+                    rsp.posterUrl5 = tvPlayEntity.getTv_poster_url();
+                }
 
+            } else if (entity.getCategory() == 3) {
+                FilmEntity filmEntity = mFilmServiceImpl.getOne(entity.getItem1());
+                if (filmEntity != null) {
+                    //rsp.regon1 = filmEntity.getFilm_national_area();
+                    rsp.name1 = filmEntity.getFilm_name();
+                    rsp.doubanScore1 = filmEntity.getDouban_level();
+                    rsp.id1 = filmEntity.getId();
+                    rsp.posterUrl1 = filmEntity.getFile_poster_url();
+                }
+                filmEntity = mFilmServiceImpl.getOne(entity.getItem2());
+                if (filmEntity != null) {
+                    rsp.name2 = filmEntity.getFilm_name();
+                    rsp.doubanScore2 = filmEntity.getDouban_level();
+                    rsp.id2 = filmEntity.getId();
+                    rsp.posterUrl2 = filmEntity.getFile_poster_url();
+                }
+                filmEntity = mFilmServiceImpl.getOne(entity.getItem3());
+                if (filmEntity != null) {
+                    rsp.name3 = filmEntity.getFilm_name();
+                    rsp.doubanScore3 = filmEntity.getDouban_level();
+                    rsp.id3 = filmEntity.getId();
+                    rsp.posterUrl3 = filmEntity.getFile_poster_url();
+                }
+                filmEntity = mFilmServiceImpl.getOne(entity.getItem4());
+                if (filmEntity != null) {
+                    rsp.name4 = filmEntity.getFilm_name();
+                    rsp.doubanScore4 = filmEntity.getDouban_level();
+                    rsp.id4 = filmEntity.getId();
+                    rsp.posterUrl4 = filmEntity.getFile_poster_url();
+                }
+                filmEntity = mFilmServiceImpl.getOne(entity.getItem5());
+                if (filmEntity != null) {
+                    rsp.name5 = filmEntity.getFilm_name();
+                    rsp.doubanScore5 = filmEntity.getDouban_level();
+                    rsp.id5 = filmEntity.getId();
+                    rsp.posterUrl5 = filmEntity.getFile_poster_url();
+                }
             }
             resps.add(rsp);
 

@@ -125,7 +125,7 @@ body {
 	font-size:0.85em;
 	color: #acacac;
 	font-family: 'ambleregular';
-	width:74%;
+	width:500px;
 	padding:9px;
 	-webkit-apperance:none;
 }
@@ -285,6 +285,13 @@ body {
 	font-size:1.2em;
 	color:#FC7D01;
 	text-transform: uppercase;
+}
+.heading h3 a{
+	font-family: 'ambleregular';
+	font-size:1.2em;
+	color:#FC7D01;
+	text-transform: uppercase;
+	float: right;
 }
 /**** Grid 1_0f_5 ****/
 .grid_1_of_5 {
@@ -1006,7 +1013,7 @@ body {
 	}
 	.search_box{
 		float:none;
-		width:100%;
+		width:1000px;
 		margin-right:0;
 	}
 	.price p{

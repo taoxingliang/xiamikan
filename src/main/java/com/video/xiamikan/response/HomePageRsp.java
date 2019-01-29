@@ -2,6 +2,7 @@ package com.video.xiamikan.response;
 
 public class HomePageRsp {
     public int category;
+    public String categoryName;
     public long id1;
     public long id2;
     public long id3;
@@ -19,6 +20,12 @@ public class HomePageRsp {
     public String posterUrl3;
     public String posterUrl4;
     public String posterUrl5;
+
+    public String regon1;
+    public String regon2;
+    public String regon3;
+    public String regon4;
+    public String regon5;
 
     public float doubanScore1;
     public float doubanScore2;
