@@ -5,14 +5,15 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Free Movies Store Website Template | Preview :: w3layouts</title>
+	<title>虾米看影视</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/>
-	<script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
-	<script type="text/javascript" src="../js/move-top.js"></script>
-	<script type="text/javascript" src="../js/easing.js"></script>
+	<link href="../../css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<script type="text/javascript" src="../../js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="../../js/move-top.js"></script>
+	<script type="text/javascript" src="../../js/easing.js"></script>
 </head>
 <body>
 <div class="header">
@@ -89,29 +90,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="cont-desc span_1_of_2">
 				<div class="product-details">
 					<div class="grid images_3_of_2">
-						<img src="../images/preview.jpg" alt="" />
+						<img th:src="${posturl}" alt="" />
 						<ul class="share_icon">
-							<li><img src="../images/qq.jpg" alt="" /></li>
-							<li><img src="../images/qqzone.jpg" alt="" /></li>
-							<li><img src="../images/weixin.jpg" alt="" /></li>
-							<li><img src="../images/weibo.jpg" alt="" /></li>
-							<li><img src="../images/douban.jpg" alt="" /></li>
+							<li><img src="../../images/qq.jpg" alt="" /></li>
+							<li><img src="../../images/qqzone.jpg" alt="" /></li>
+							<li><img src="../../images/weixin.jpg" alt="" /></li>
+							<li><img src="../../images/weibo.jpg" alt="" /></li>
+							<li><img src="../../images/douban.jpg" alt="" /></li>
 						</ul>
 					</div>
 					<div class="desc span_3_of_2">
-						<h2>电影名 </h2>
-						<p>又名</p>
+						<h2><p th:text="${name}"></p>> </h2>
+						<p th:text="${alias}">又名</p>
 						<div class="price">
-							<p>片长 ：<span>117分钟</span></p>
+							<p>片长 ：<span><p th:text="${length}">117分钟<p></span></p>
 						</div>
 						<div class="available">
 							<ul>
-								<li><span>导演:</span> &nbsp; 周星驰</li>
-								<li><span>演员:</span>&nbsp; 杨幂，胡歌</li>
-								<li><span>类型:</span>&nbsp; 喜剧</li>
-								<li><span>国家地区:</span> &nbsp; 中国</li>
-								<li><span>上映时间:</span>&nbsp; 2017</li>
-								<li><span>豆瓣评分:</span>&nbsp; 5.6</li>
+								<li><span>导演:</span> &nbsp; <sapn th:text="${director}">周星驰</sapn></li>
+								<li><span>演员:</span>&nbsp; <span th:text="${performer}">杨幂，胡歌</span></li>
+								<li><span>类型:</span>&nbsp; <span th:text="${type}">喜剧</span></li>
+								<li><span>国家地区:</span> &nbsp; <span th:text="${area}">中国</span></li>
+								<li><span>上映时间:</span>&nbsp; <span th:text="${year}">2017</span></li>
+								<li><span>豆瓣评分:</span>&nbsp; <span th:text="${douban}">5.6</span></li>
 							</ul>
 						</div>
 						<div class="movie_desc">
@@ -123,7 +124,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="product_desc">
 					<h2>简介 :</h2>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+					<p th:text="${introduction}">此电影暂无简介</p>
 				</div>
 				<div class="advertisement">
 					<ul>
@@ -168,7 +169,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h2>人气最高</h2>
 				<div class="special_movies">
 					<div class="movie_poster">
-						<a href="preview.html"><img src="../images/end-game.jpg" alt="" /></a>
+						<a href="preview.html"><img src="../../images/end-game.jpg" alt="" /></a>
 					</div>
 					<div class="movie_desc">
 						<h3><a href="preview.html">End Game</a></h3>
@@ -179,7 +180,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="special_movies">
 					<div class="movie_poster">
-						<a href="preview.html"><img src="../images/Coraline.jpg" alt="" /></a>
+						<a href="preview.html"><img src="../../images/Coraline.jpg" alt="" /></a>
 					</div>
 					<div class="movie_desc">
 						<h3><a href="preview.html">Coraline</a></h3>
@@ -190,7 +191,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="special_movies">
 					<div class="movie_poster">
-						<a href="preview.html"><img src="../images/Eclipse.jpg" alt="" /></a>
+						<a href="preview.html"><img src="../../images/Eclipse.jpg" alt="" /></a>
 					</div>
 					<div class="movie_desc">
 						<h3><a href="preview.html">Eclipse</a></h3>
@@ -201,7 +202,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="special_movies">
 					<div class="movie_poster">
-						<a href="preview.html"><img src="../images/Priest.jpg" alt="" /></a>
+						<a href="preview.html"><img src="../../images/Priest.jpg" alt="" /></a>
 					</div>
 					<div class="movie_desc">
 						<h3><a href="preview.html">Priest 3D</a></h3>
@@ -212,7 +213,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="special_movies">
 					<div class="movie_poster">
-						<a href="preview.html"><img src="../images/Sorority_Wars.jpg" alt="" /></a>
+						<a href="preview.html"><img src="../../images/Sorority_Wars.jpg" alt="" /></a>
 					</div>
 					<div class="movie_desc">
 						<h3><a href="preview.html">Sorority Wars</a></h3>
@@ -267,10 +268,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="social-icons">
 					<h4>Follow Us</h4>
 					<ul>
-						<li><a href="#" target="_blank"><img src="../images/facebook.png" alt="" /></a></li>
-						<li><a href="#" target="_blank"><img src="../images/twitter.png" alt="" /></a></li>
-						<li><a href="#" target="_blank"><img src="../images/skype.png" alt="" /> </a></li>
-						<li><a href="#" target="_blank"> <img src="../images/linkedin.png" alt="" /></a></li>
+						<li><a href="#" target="_blank"><img src="../../images/facebook.png" alt="" /></a></li>
+						<li><a href="#" target="_blank"><img src="../../images/twitter.png" alt="" /></a></li>
+						<li><a href="#" target="_blank"><img src="../../images/skype.png" alt="" /> </a></li>
+						<li><a href="#" target="_blank"> <img src="../../images/linkedin.png" alt="" /></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -284,7 +285,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="text/javascript">
 	$(document).ready(function() {
 		$().UItoTop({ easingType: 'easeOutQuart' });
-
+		window.category = [[${category}]];
 	});
 </script>
 <a href="#" id="toTop"><span id="toTopHover"> </span></a>
