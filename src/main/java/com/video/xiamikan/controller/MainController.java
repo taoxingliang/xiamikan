@@ -13,8 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -177,8 +176,10 @@ public class MainController {
         return resps;
     }
 
-    @GetMapping("/getDetail")
-    String getDetail() {
+    @GetMapping(value="/getDetail/{id}")
+    String getDetail(@PathVariable("id") Long id, Model model, HttpServletRequest request) {
+        System.out.println(id);
+        model.addAttribute("abs_path", request.getRequestURI());
         return "/preview";
     }
 }
