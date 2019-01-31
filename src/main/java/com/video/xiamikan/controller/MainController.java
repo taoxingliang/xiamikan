@@ -1,15 +1,9 @@
 package com.video.xiamikan.controller;
 
 
-import com.video.xiamikan.entity.AnimationEntity;
-import com.video.xiamikan.entity.FilmEntity;
-import com.video.xiamikan.entity.HomePageEntity;
-import com.video.xiamikan.entity.TvPlayEntity;
+import com.video.xiamikan.entity.*;
 import com.video.xiamikan.response.HomePageRsp;
-import com.video.xiamikan.service.impl.AnimationServiceImpl;
-import com.video.xiamikan.service.impl.FilmServiceImpl;
-import com.video.xiamikan.service.impl.HomePageServiceImpl;
-import com.video.xiamikan.service.impl.TvPlayServiceImpl;
+import com.video.xiamikan.service.impl.*;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -39,6 +33,15 @@ public class MainController {
 
     @Autowired
     AnimationServiceImpl mAnimationServiceImpl;
+
+    @Autowired
+    AnimationUrlServiceImpl mAnimationUrlServiceImpl;
+
+    @Autowired
+    FilmUrlServiceImpl mFilmUrlServiceImpl;
+
+    @Autowired
+    TvPlayUrlServiceImpl mTvPlayUrlServiceImpl;
 
     @GetMapping("/")
     String index(Model model, HttpServletRequest request, HttpServletResponse response) {
@@ -184,8 +187,9 @@ public class MainController {
     @GetMapping(value="/getDetail/{category}/{id}")
     String getDetail(@PathVariable("category") int category, @PathVariable("id") Long id, Model model, HttpServletRequest request) {
         System.out.println(id);
-        model.addAttribute("abs_path", request.getRequestURI());
+        model.addAttribute("abs_path", request.getContextPath());
         model.addAttribute("category", category);
+        model.addAttribute("itemId", id);
 
         if (category == 1) {
             FilmEntity entity = mFilmServiceImpl.getOne(id);
@@ -229,5 +233,24 @@ public class MainController {
         }
 
         return "/preview";
+    }
+
+
+    @ResponseBody
+    @GetMapping("/getAnimationUrls/{id}")
+    List<AnimationUrlEntity> getAnimationUrls(@PathVariable("id") Long id) {
+        return mAnimationUrlServiceImpl.getUrls(id);
+    }
+
+    @ResponseBody
+    @GetMapping("/getFilmUrls/{id}")
+    List<FilmUrlEntity> getFilmUrls(@PathVariable("id") Long id) {
+        return mFilmUrlServiceImpl.getUrls(id);
+    }
+
+    @ResponseBody
+    @GetMapping("/getTvUrls/{id}")
+    List<TvPlayUrlEntity> getTvUrls(@PathVariable("id") Long id) {
+        return mTvPlayUrlServiceImpl.getUrls(id);
     }
 }

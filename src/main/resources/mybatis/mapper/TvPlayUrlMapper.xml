@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.video.xiamikan.mapper.TvPlayUrlMapper" >
+
+    <resultMap id="BaseResultMap" type="com.video.xiamikan.entity.TvPlayUrlEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="tv_id" property="tv_id" jdbcType="BIGINT" />
+        <result column="tv_index" property="tv_index" jdbcType="INTEGER" />
+        <result column="tv_url_type" property="tv_url_type" jdbcType="INTEGER" />
+        <result column="tv_url" property="tv_url" jdbcType="VARCHAR"/>
+        <result column="tv_url_info" property="tv_url_info" jdbcType="VARCHAR" />
+        <result column="tv_url_updatetime" property="tv_url_updatetime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, tv_id, tv_index, tv_url_type, tv_url, tv_url_info,tv_url_updatetime
+    </sql>
+
+    <select id="getUrls" parameterType="java.lang.Long" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xiamikan_tvplay_downloadurl_tb
+        WHERE tv_id = #{pId}
+    </select>
+
+    <select id="getEntity" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xiamikan_tvplay_downloadurl_tb
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.video.xiamikan.entity.TvPlayUrlEntity" >
+       INSERT INTO
+               xiamikan_tvplay_downloadurl_tb
+               (tv_id, tv_index, tv_url_type, tv_url, tv_url_info)
+           VALUES
+               (#{tv_id}, #{tv_index}, #{tv_url_type}, #{tv_url}, #{tv_url_info})
+    </insert>
+
+    <update id="update" parameterType="com.video.xiamikan.entity.TvPlayUrlEntity" >
+        UPDATE
+        xiamikan_tvplay_downloadurl_tb
+        SET
+        <if test="tv_id != null">am_id = #{tv_id},</if>
+        <if test="tv_index != null">tv_index = #{tv_index},</if>
+        <if test="tv_url_type != null">tv_url_type = #{tv_url_type},</if>
+        <if test="tv_url != null">tv_url = #{tv_url},</if>
+        <if test="tv_url_info != null">tv_url_info = #{tv_url_info}</if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+       DELETE FROM
+                xiamikan_tvplay_downloadurl_tb
+       WHERE
+                id = #{id}
+    </delete>
+
+</mapper>

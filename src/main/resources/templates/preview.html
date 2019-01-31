@@ -14,6 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script type="text/javascript" src="../../js/jquery-1.9.0.min.js"></script>
 	<script type="text/javascript" src="../../js/move-top.js"></script>
 	<script type="text/javascript" src="../../js/easing.js"></script>
+	<script type="text/javascript" src="../../js/src/index.js"></script>
 </head>
 <body>
 <div class="header">
@@ -37,7 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="wrap">
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.html"><img src="../images/logo.png" alt="" /></a>
+				<a href="index.html"><img src="../../images/logo.png" alt="" /></a>
 			</div>
 			<div class="header_top_right">
 				<div class="search_box">
@@ -100,7 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</ul>
 					</div>
 					<div class="desc span_3_of_2">
-						<h2><p th:text="${name}"></p>> </h2>
+						<h2><p th:text="${name}"></p> </h2>
 						<p th:text="${alias}">又名</p>
 						<div class="price">
 							<p>片长 ：<span><p th:text="${length}">117分钟<p></span></p>
@@ -128,41 +129,40 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="advertisement">
 					<ul>
-						<li><img src="../images/110.jpg"></img></li>
+						<li><img src="../../images/110.jpg"></img></li>
 					</ul>
 				</div>
 
 				<div class="baidu_download">
 					<h3>百度下载</h3>
-						<ul>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
+						<ul id="baidu_download_ul">
 						</ul>
 				</div>
+				<br>
 				<div class="xunlei_download">
 					<h3>迅雷下载</h3>
-						<ul>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
+						<ul id="xunlei_download_ul">
 						</ul>
 				</div>
+				<br>
 				<div class="cili_download">
 					<h3>磁力下载</h3>
-						<ul>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
+						<ul id="cili_download_ul">
 						</ul>
 				</div>
+				<br>
 				<div class="dianlv_download">
 					<h3>电驴下载</h3>
-						<ul>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
-							<li><a href="#">sssssssssssssssssssssssssssssssssssssssssssssss</a></li>
+						<ul id="dianlv_download_ul">
+
 						</ul>
+				</div>
+				<br>
+				<div class="other_download">
+					<h3>其他下载</h3>
+					<ul id="other_download_ul">
+
+					</ul>
 				</div>
 			</div>
 			<div class="rightsidebar span_3_of_1 sidebar">
@@ -285,7 +285,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="text/javascript">
 	$(document).ready(function() {
 		$().UItoTop({ easingType: 'easeOutQuart' });
+		window.abs_path = '[(${abs_path})]';
 		window.category = [[${category}]];
+		window.itemId = [[${itemId}]];
+		loadItemUrls();
 	});
 </script>
 <a href="#" id="toTop"><span id="toTopHover"> </span></a>

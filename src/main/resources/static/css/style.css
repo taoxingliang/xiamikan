@@ -295,13 +295,13 @@ body {
 }
 
 .share_icon li img{
-	float: right;
-	width: 45px;
-	height: 45px;
-	margin-top: 45px;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-bottom: 50px;
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin-top: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
 }
 
 .advertisement ul li img{
@@ -627,43 +627,76 @@ body {
 	color:#FC7D01;
 }
 
+.baidu_download {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
 .baidu_download h3 {
-	font-size:3em;
+	font-size:2em;
 	font-family: 'ambleregular';
 	color:#FC7D01;
 }
 .baidu_download ul li a{
-	font-size:0.8em;
+	font-size:1.2em;
 	font-family: 'ambleregular';
 	color: #6b69fc;
 }
+
+.xunlei_download {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
 .xunlei_download h3 {
-	font-size:3em;
+	font-size:2em;
 	font-family: 'ambleregular';
 	color:#FC7D01;
 }
 .xunlei_download ul li a{
-	font-size:0.8em;
+	font-size:1.2em;
 	font-family: 'ambleregular';
 	color: #6b69fc;
 }
+.cili_download {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
 .cili_download h3 {
-	font-size:3em;
+	font-size:2em;
 	font-family: 'ambleregular';
 	color:#FC7D01;
 }
 .cili_download ul li a{
-	font-size:0.8em;
+	font-size:1.2em;
 	font-family: 'ambleregular';
 	color: #6b69fc;
 }
+.dianlv_download {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
 .dianlv_download h3 {
-	font-size:3em;
+	font-size:2em;
 	font-family: 'ambleregular';
 	color:#FC7D01;
 }
 .dianlv_download ul li a{
-	font-size:0.8em;
+	font-size:1.2em;
+	font-family: 'ambleregular';
+	color: #6b69fc;
+}
+
+.other_download {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.other_download h3 {
+	font-size:2em;
+	font-family: 'ambleregular';
+	color:#FC7D01;
+}
+.other_download ul li a{
+	font-size:1.2em;
 	font-family: 'ambleregular';
 	color: #6b69fc;
 }

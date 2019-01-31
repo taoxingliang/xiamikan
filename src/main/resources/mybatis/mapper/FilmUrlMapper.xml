@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.video.xiamikan.mapper.FilmUrlMapper" >
+
+    <resultMap id="BaseResultMap" type="com.video.xiamikan.entity.FilmUrlEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="film_id" property="film_id" jdbcType="BIGINT" />
+        <result column="film_url_type" property="film_url_type" jdbcType="INTEGER" />
+        <result column="film_url" property="film_url" jdbcType="VARCHAR"/>
+        <result column="film_url_info" property="film_url_info" jdbcType="VARCHAR" />
+        <result column="film_url_updatetime" property="film_url_updatetime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, film_id, film_url_type, film_url, film_url_info,film_url_updatetime
+    </sql>
+
+    <select id="getUrls" parameterType="java.lang.Long" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xiamikan_film_downloadurl_tb
+        WHERE film_id = #{pId}
+    </select>
+
+    <select id="getEntity" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xiamikan_film_downloadurl_tb
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.video.xiamikan.entity.FilmUrlEntity" >
+       INSERT INTO
+               xiamikan_film_downloadurl_tb
+               (film_id, film_url_type, film_url, film_url_info)
+           VALUES
+               (#{film_id}, #{film_url_type}, #{film_url}, #{film_url_info})
+    </insert>
+
+    <update id="update" parameterType="com.video.xiamikan.entity.FilmUrlEntity" >
+        UPDATE
+        xiamikan_film_downloadurl_tb
+        SET
+        <if test="film_id != null">film_id = #{film_id},</if>
+        <if test="film_url_type != null">film_url_type = #{film_url_type},</if>
+        <if test="film_url != null">film_url = #{film_url},</if>
+        <if test="film_url_info != null">film_url_info = #{film_url_info}</if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+       DELETE FROM
+                xiamikan_film_downloadurl_tb
+       WHERE
+                id = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.video.xiamikan.mapper.AnimationUrlMapper" >
+
+    <resultMap id="BaseResultMap" type="com.video.xiamikan.entity.AnimationUrlEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="am_id" property="am_id" jdbcType="BIGINT" />
+        <result column="am_url_type" property="am_url_type" jdbcType="INTEGER" />
+        <result column="am_url" property="am_url" jdbcType="VARCHAR"/>
+        <result column="am_url_info" property="am_url_info" jdbcType="VARCHAR" />
+        <result column="am_url_updatetime" property="am_url_updatetime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, am_id, am_url_type, am_url, am_url_info,am_url_updatetime
+    </sql>
+
+    <select id="getUrls" parameterType="java.lang.Long" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xiamikan_am_downloadurl_tb
+        WHERE am_id = #{pId}
+    </select>
+
+    <select id="getEntity" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xiamikan_am_downloadurl_tb
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.video.xiamikan.entity.AnimationUrlEntity" >
+       INSERT INTO
+               xiamikan_am_downloadurl_tb
+               (am_id, am_url_type, am_url, am_url_info)
+           VALUES
+               (#{am_id}, #{am_url_type}, #{am_url}, #{am_url_info})
+    </insert>
+
+    <update id="update" parameterType="com.video.xiamikan.entity.AnimationUrlEntity" >
+        UPDATE
+        xiamikan_am_downloadurl_tb
+        SET
+        <if test="am_id != null">am_id = #{am_id},</if>
+        <if test="am_url_type != null">am_url_type = #{am_url_type},</if>
+        <if test="am_url != null">am_url = #{am_url},</if>
+        <if test="am_url_info != null">am_url_info = #{am_url_info}</if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+       DELETE FROM
+                xiamikan_am_downloadurl_tb
+       WHERE
+                id = #{id}
+    </delete>
+
+</mapper>
